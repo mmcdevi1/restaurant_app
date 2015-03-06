@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 100.times do 
 	Restaurant.create(name: Faker::Company.name, 
-										description: Faker::Lorem.sentence(4), 
+										description: Faker::Lorem.paragraph(1), 
 										city: Faker::Address.city,
 										state: Faker::Address.state_abbr,
 										address: Faker::Address.street_address,

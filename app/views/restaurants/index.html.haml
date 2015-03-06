@@ -1,2 +1,17 @@
-%h1 Restaurants#index
-%p Find me in app/views/restaurants/index.html.haml
+.panel
+	.panel-heading
+		%h4 Diners' Choice Winners: Best Overall
+		%p Manhattan's best restaurants based upon thousands of OpenTable diner reviews
+	- @restaurants.each do |restaurant|
+		.restaurants
+			.row
+				.col-sm-6
+					.restaurant-name
+						= link_to restaurant.name, restaurant
+					.restaurant-rating
+						= "Rating: 4.5 (48)"
+					.restaurant-address
+						= "Sushi | #{restaurant.city}, #{restaurant.state}"
+				.col-sm-6
+					.restaurant-description 
+						= restaurant.description
