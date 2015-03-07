@@ -1,0 +1,11 @@
+.hero-unit
+	%h4 The Best Restaurants
+	%h2 Make a free reservation 
+	%form
+		%input.form-control{placeholder: "Location, Restaurant, Cuisine..."}
+		%input{:type => "Submit", value: "Search", class: "btn btn-danger"}
+	.clearfix
+	%p 
+		View all 
+		= @restaurants.count 
+		restaurants in New York Area
