@@ -5,7 +5,9 @@
 			= image_tag('logo.png', class: "navbar-brand")
 		%nav.collapse.navbar-collapse.bs-navbar-collapse
 			%ul.nav.navbar-nav.navbar-right
-				%li= link_to "Add New Restaurant", new_restaurant_path
+				- unless params[:controller] == "restaurants" && params[:action] == "new"
+					%li= link_to "Add New Restaurant", new_restaurant_path
 				%li= link_to "Register", "#"
 				%li= link_to "Login", "#"
+
 				

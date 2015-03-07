@@ -49,7 +49,11 @@ class RestaurantsController < ApplicationController
   end
 
   def layout
-    "restaurant"
+    if params[:action] == 'index'
+      "restaurant"
+    else
+      "application"
+    end
   end
 
 end

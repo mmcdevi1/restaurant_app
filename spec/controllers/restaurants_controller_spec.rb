@@ -29,19 +29,57 @@ describe RestaurantsController do
     end
   end
 
-  # describe "GET #new" do
-  #   it "returns http success" do
-  #     get :new
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
+  describe "GET #new" do
+    before do
+      get :new
+    end
 
-  # describe "GET #create" do
-  #   it "returns http success" do
-  #     get :create
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
+    it "returns http success" do
+      expect(response).to have_http_status(:success)
+    end
+
+    it "renders the new template" do 
+      expect(response).to render_template :new
+    end
+
+    it "sets the @restaurant variable" do 
+      expect(assigns(:restaurant)). to be_instance_of(Restaurant)
+    end
+  end
+
+  describe "GET #create" do
+    context "with valid params" do 
+      before do 
+        post :create, restaurant: Fabricate.attributes_for(:restaurant)
+      end
+
+      it "creates a restaurant" do 
+        expect(Restaurant.count).to eq(1)
+      end
+
+      it "redirects to the root path" do 
+        expect(response).to redirect_to root_path
+      end
+    end
+
+    context "with invalid params" do 
+      before do 
+        post :create, restaurant: { name: "Restaurant" }
+      end
+
+      it "does not create a restaurant" do 
+        expect(Restaurant.count).to eq(0)
+      end
+
+      it "renders the new template" do 
+        expect(response).to render_template :new
+      end
+
+      it "sets @restaurant" do 
+        expect(assigns(:restaurant)).to be_instance_of(Restaurant)
+      end
+    end
+  end
 
   # describe "GET #edit" do
   #   it "returns http success" do

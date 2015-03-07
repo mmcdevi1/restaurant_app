@@ -1,5 +1,17 @@
-require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe Restaurant, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Restaurant do 
+  describe "relationships" do 
+
+  end
+
+  describe "validations" do 
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:description) }
+    it { should validate_presence_of(:address) }
+    it { should validate_presence_of(:phone_number) }
+    it { should validate_presence_of(:city) }
+    it { should validate_presence_of(:state) }
+    it { should validate_presence_of(:zipcode) }
+  end
 end
