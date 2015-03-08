@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  # get 'static_pages/index'
+
   resources :restaurants  
-  root to: "restaurants#index"
+  root to: "static_pages#index"
 
   resources :users, :only => :show
 
