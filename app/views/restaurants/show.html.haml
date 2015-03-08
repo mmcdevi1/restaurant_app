@@ -1,1 +1,3 @@
 %h1= @restaurant.name
+= link_to "Edit", edit_restaurant_path(@restaurant)
+= link_to "Delete", @restaurant, method: :delete, data: { confirm: 'Are you sure?' }
