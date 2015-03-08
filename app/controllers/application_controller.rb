@@ -7,5 +7,29 @@ class ApplicationController < ActionController::Base
     true
   end
 
+  #Allow Devise to add custom fields in database
+  before_action :configure_devise_permitted_parameters, if: :devise_controller?
+  protected
+  def configure_devise_permitted_parameters
+    registration_params = [:name,
+                           :role,
+                           :email, 
+                           :password, 
+                           :password_confirmation]
+
+    if params[:action] == 'update'
+      devise_parameter_sanitizer.for(:account_update) { 
+        |u| u.permit(registration_params << :password, 
+                                            :password_confirmation, 
+                                            :current_password)
+      }
+    elsif params[:action] == 'create'
+      devise_parameter_sanitizer.for(:sign_up) { 
+        |u| u.permit(registration_params) 
+      }
+    end
+  end
+  # End Devise #############
+
   helper_method :current_user
 end
