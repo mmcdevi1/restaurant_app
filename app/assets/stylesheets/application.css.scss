@@ -45,6 +45,21 @@ body {
 	background: #f5f5f5;
 	margin-top:50px;
 }
+body#devise {
+	margin-top: 0px;
+	.panel {
+		margin:0;
+	}
+
+	.btn-default {
+		position: absolute;
+		top: 30px;
+		left: 30px;
+	}
+}
+html, body, #wrapper {
+	height: 100%;
+}
 header {
 	background: #fff;
 
@@ -76,6 +91,7 @@ a:hover {
 .btn {
 	border-radius: 2px;
 	border: none;
+	padding: 9px 12px 6px 12px;
 }
 .navbar-nav > li > a.navbar-btn { 
 	padding-top: 6px; 
@@ -181,10 +197,59 @@ footer {
 	color: #9E9E9E;
 }
 .btn-lg {
-	padding: 18px 16px;
+	padding: 13px 16px;
 }
 
+#page {
+    display:table;
+    overflow:hidden;
+    margin:0px auto;
+}
+*:first-child+html #page {
+    position:relative;
+}/*ie7*/
+* html #page {
+    position:relative;
+}/*ie6*/
 
+#content_container{
+    display:table-cell;
+    vertical-align: middle;
+}
+*:first-child+html #content_container{
+    position:absolute;
+    top:50%;
+    }/*ie7*/
+* html #content_container{
+    position:absolute;
+    top:50%;
+    }/*ie6*/
+
+*:first-child+html #content{
+    position:relative;
+    top:-50%;
+    }/*ie7*/
+* html #content{
+    position:relative;
+    top:-50%;
+    }/*ie6*/
+
+#page{
+    height:100%;
+    width:390px;
+}
+.devise {
+	.form-group {
+		margin-bottom: 11px;
+	}
+
+	.actions {
+		margin-bottom: 20px;
+	}
+}
+.btn-default  {
+	border: 1px solid #c4c4c4;
+}
 
 
 
