@@ -1,3 +1,27 @@
-%h1= @restaurant.name
+.hero-unit.center
+  %h2{style: "margin:0;"}= @restaurant.name
+  %p{style: "margin:0;"}
+    = @restaurant.city + ", " + @restaurant.state
+.container
+  .row
+    .col-sm-8
+      .panel
+        .panel-body
+          %h3{style: "margin-bottom: 20px;"}= "About " + @restaurant.name
+          %p= @restaurant.description
+    .col-sm-4
+      .panel
+        .panel-body 
+          %form
+            .form-group
+              %input.form-control{placeholder: "How many people?"}
+            .form-group
+              %input.form-control{placeholder: "Date"}
+            .form-group
+              %input.form-control{placeholder: "Time"}
+            %input{:type => "Submit", value: "Find a Table", class: "btn btn-danger btn-lg btn-block"}
+
+
+
 = link_to "Edit", edit_restaurant_path(@restaurant)
 = link_to "Delete", @restaurant, method: :delete, data: { confirm: 'Are you sure?' }
