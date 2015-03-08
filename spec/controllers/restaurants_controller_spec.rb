@@ -58,7 +58,7 @@ describe RestaurantsController do
       end
 
       it "redirects to the root path" do 
-        expect(response).to redirect_to root_path
+        expect(response).to redirect_to restaurant
       end
     end
 

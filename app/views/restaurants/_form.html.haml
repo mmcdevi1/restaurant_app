@@ -1,0 +1,36 @@
+= form_for(@restaurant, html: {class: ""}) do |f|
+  .panel
+    .panel-heading
+      Please Enter Your Restaurant Detail
+    .panel-body
+      - if @restaurant.errors.any?
+        #error_explanation
+          %h2= pluralize(@restaurant.errors.count, "error")
+          %ul
+            - @restaurant.errors.full_messages.each do |msg|
+              %li= msg
+      .form-group
+        = f.label :name, class: "control-label"
+        = f.text_field :name, class: "form-control", placeholder: "Enter Restaurant Name"
+      .form-group
+        = f.label :description, class: "control-label"
+        = f.text_area :description, class: "form-control", placeholder: "Enter Restaurant Name"
+      .form-group
+        = f.label :address, "Street Address", class: "control-label"
+        = f.text_field :address, class: "form-control", placeholder: "Enter Street Address"
+      .form-group
+        = f.label :city, class: "control-label"
+        = f.text_field :city, class: "form-control", placeholder: "Enter City"
+      .form-group
+        = f.label :state, class: "control-label"
+        = f.text_field :state, class: "form-control", placeholder: "Enter State"
+      .form-group
+        = f.label :zipcode, class: "control-label"
+        = f.text_field :zipcode, class: "form-control", placeholder: "Zip Code"
+      .form-group
+        = f.label :phone_number, "Phone Number", class: "control-label"
+        = f.text_field :phone_number, class: "form-control", placeholder: "Enter Phone Number"
+  .row{style: "margin-top:50px;"}
+    .col-sm-6.col-sm-offset-3
+      = f.submit "Save", class: "btn btn-primary btn-lg btn-block"
+        

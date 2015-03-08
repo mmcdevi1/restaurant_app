@@ -17,7 +17,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
       flash[:success] = "Your restaurant has been uploaded."
-      redirect_to root_path
+      redirect_to @restaurant
     else
       render 'new'
     end
@@ -27,9 +27,18 @@ class RestaurantsController < ApplicationController
   end
 
   def update
+    if @restaurant.update_attributes(restaurant_params)
+      flash[:success] = "Restaurant updated."
+      redirect_to @restaurant
+    else
+      render 'edit'
+    end 
   end
 
   def destroy
+    @restaurant.destroy
+    flash[:success] = "Restaurant deleted."
+    redirect_to root_path
   end
 
   private
