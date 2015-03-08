@@ -3,10 +3,6 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def current_user
-    true
-  end
-
   #Allow Devise to add custom fields in database
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
   protected
@@ -31,5 +27,4 @@ class ApplicationController < ActionController::Base
   end
   # End Devise #############
 
-  helper_method :current_user
 end

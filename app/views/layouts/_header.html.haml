@@ -6,8 +6,13 @@
 		%nav.collapse.navbar-collapse.bs-navbar-collapse
 			%ul.nav.navbar-nav.navbar-right
 				- unless params[:controller] == "restaurants" && params[:action] == "new"
-					%li= link_to "Add New Restaurant", new_restaurant_path
-				%li= link_to "Register", register_path
-				%li= link_to "Login", new_user_session_path
+					- if current_user.role == true
+						%li= link_to "Add New Restaurant", new_restaurant_path
+				- if user_signed_in?
+					%li= link_to current_user.name, "#"
+					%li= link_to "Logout", logout_path
+				- else
+					%li= link_to "Register", register_path
+					%li= link_to "Login", login_path
 
-				
+					
