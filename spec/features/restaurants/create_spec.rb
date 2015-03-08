@@ -10,8 +10,7 @@ describe "Creating restaurants" do
     options[:zipcode] ||= "This is my restaurant"
     options[:phone_number] ||= "Restaurant"
 
-    visit root_path
-    click_link "Add New Restaurant"
+    visit new_restaurant_path
     expect(page).to have_content("Add New Restaurant")
 
     fill_in "Name",           with: options[:name]
@@ -34,4 +33,78 @@ describe "Creating restaurants" do
     create_restaurant name: ""
     expect(page).to have_content("error")
   end
+
+  it "displays an error when the restaurant has no address" do 
+    create_restaurant address: ""
+    expect(page).to have_content("error")
+  end
+
+  it "displays an error when the restaurant has no city" do 
+    create_restaurant city: ""
+    expect(page).to have_content("error")
+  end
+
+  it "displays an error when the restaurant has no state" do 
+    create_restaurant state: ""
+    expect(page).to have_content("error")
+  end
+
+  it "displays an error when the restaurant has no zipcode" do 
+    create_restaurant zipcode: ""
+    expect(page).to have_content("error")
+  end
+
+  it "displays an error when the restaurant has no phone_number" do 
+    create_restaurant phone_number: ""
+    expect(page).to have_content("error")
+  end
+
+  it "displays an error when the restaurant has no description" do 
+    create_restaurant description: ""
+    expect(page).to have_content("error")
+  end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,11 @@
-require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe User do 
+  describe "relationships" do 
+    it { should have_many(:restaurants) }
+  end
+
+  describe "validations" do 
+    
+  end
 end

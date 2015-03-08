@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Restaurant do 
   describe "relationships" do 
-
+    it { should belong_to(:user) }
   end
 
   describe "validations" do 
