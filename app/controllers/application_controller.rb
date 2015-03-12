@@ -27,4 +27,9 @@ class ApplicationController < ActionController::Base
   end
   # End Devise #############
 
+  def after_sign_in_path_for(resource)
+    root_path
+  end
+
+
 end

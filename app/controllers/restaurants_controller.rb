@@ -1,5 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
+
   layout :layout
 
   def index
@@ -65,4 +67,36 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  # def anybody_signed_in?
+  #   if !signed_in?
+  #     redirect_to root_path
+  #   end
+  # end
+
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
