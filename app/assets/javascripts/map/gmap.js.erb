@@ -1,0 +1,41 @@
+$(document).ready(function () {
+
+
+
+  var geocoder;
+  var map;
+  var addresses = ['<%= Restaurant.last.city %>, <%= Restaurant.last.state %>'];
+  function codeAddress() {
+    var address = addresses[0];
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      
+    });
+  }
+
+  geocoder = new google.maps.Geocoder();
+  var latlng = new google.maps.LatLng(0,0);
+  var mapOptions = {
+    zoom: 6,
+    center: codeAddress()
+  }
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  for (var x = 0; x < addresses.length; x++) {
+    $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addresses[x]+'&sensor=false', null, function (data) {
+        var p = data.results[0].geometry.location;
+        var latlng = new google.maps.LatLng(p.lat, p.lng);
+        new google.maps.Marker({
+            position: latlng,
+            map: map
+        });
+
+    });
+  }
+
+});
