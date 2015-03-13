@@ -5,11 +5,6 @@ describe RestaurantsController do
   let(:owner) { Fabricate(:owner) }
   let(:user) { Fabricate(:user) }
 
-  before do 
-    session[:user_id] = user.id
-    session[:owner_id] = owner.id
-  end
-
   describe "GET index" do
     before do 
       get :index

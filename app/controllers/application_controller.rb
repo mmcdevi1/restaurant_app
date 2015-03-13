@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   protected
   def configure_devise_permitted_parameters
     registration_params = [:name,
-                           :role,
                            :email, 
                            :password, 
                            :password_confirmation]

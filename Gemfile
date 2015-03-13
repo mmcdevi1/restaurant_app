@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 # ruby '2.1.1'
 
+gem 'nokogiri'
 gem 'bootstrap-sass'
 gem 'coffee-rails'
 gem 'rails', '4.1.5'

@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe "Creating restaurants" do 
+  let(:owner) { Fabricate(:owner) }
+  let(:user) { Fabricate(:user) }
+
   def create_restaurant(options={})
     options[:name] ||= "Restaurant"
     options[:description] ||= "This is my restaurant"
@@ -22,6 +25,14 @@ describe "Creating restaurants" do
     fill_in "Description",    with: options[:description]
 
     click_button "Save"
+  end
+
+  before do 
+    visit new_owner_session_path
+    fill_in "Email", with: owner.email
+    fill_in "Password", with: owner.password 
+    click_button "Log in"
+    visit new_restaurant_path
   end
 
   it "redirects to the root path on success" do 
